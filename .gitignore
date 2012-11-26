@@ -1,0 +1,6 @@
+.DS_*
+.classpath
+.project
+.settings
+*.class
+bin
