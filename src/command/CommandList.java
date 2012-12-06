@@ -3,6 +3,11 @@ package command;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * A class representing a list of Commands, more specifically
+ * commands factories, i.e. those that respond to the parse
+ * method and were created with the no argument constructor.
+ */
 public class CommandList {
 
 	private List<Command> factories;

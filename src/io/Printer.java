@@ -19,6 +19,13 @@ import command.QuitCommand;
 import command.TakeCommand;
 import command.WaitCommand;
 
+/**
+ * A class for doing all output in the program. It implements
+ * the Printer interfaces from all other classes that require
+ * printing of some kind.
+ * 
+ * This class is not meant for reuse.
+ */
 public class Printer implements       GamePrinter,
                                     Input.Printer,
                                      Room.Printer,

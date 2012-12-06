@@ -23,20 +23,22 @@ import event.PointOnTurnEvent;
 import event.WaitToSwingEvent;
 
 /**
- * This class is the main class of the "World of Zuul" application.
- * "World of Zuul" is a very simple, text based adventure game. Users can walk
- * around some scenery. That's all. It should really be extended to make it more
- * interesting!
- * 
  * To play this game, create an instance of this class and call the "play"
  * method.
  * 
- * This main class creates and initialises all the others: it creates all rooms,
- * creates the parser and starts the game. It also evaluates and executes the
- * commands that the parser returns.
+ * This class is responsible for bringing the entire game together. It
+ * initializes a Printer, creates all rooms, keeps track of points and
+ * deals with all game logic.
  * 
- * @author Michael Kölling and David J. Barnes
- * @version 2011.08.10
+ * Because of the special nature of this game the Game class has a somewhat
+ * unusual lifecycle. Some variables are kept for the entire lifespan
+ * of the Game class, while the rest are reinitialized every time the player
+ * dies.
+ * 
+ * The Game class also implements the Listener interfaces of all the events
+ * and commands it uses. 
+ * 
+ * This class is not intended for reuse.
  */
 
 public class Game implements io.Printer.PlayerContainer,
@@ -63,6 +65,7 @@ public class Game implements io.Printer.PlayerContainer,
 	
 	private List<List<Command>> commandQueues;
 	
+	//these variables are reinitialized every time the player dies
 	private Room       startRoom;
 	private Room       chargedRoom;
 	private List<Room> rooms;
@@ -73,7 +76,7 @@ public class Game implements io.Printer.PlayerContainer,
 	private boolean    keyTaken;
 
 	/**
-	 * Create the game and initialise its internal map.
+	 * Initializes the game and adds all commands to a list.
 	 */
 	public Game() {
 		commandQueues = new ArrayList<>();
@@ -97,7 +100,9 @@ public class Game implements io.Printer.PlayerContainer,
 	private void printRoomLater()    { printRoom    = true; }
 	
 	/**
-	 * 
+	 * Purges all state for the current iteration of the game,
+	 * adds a player, and reinitializes the game again from the
+	 * beginning.
 	 */
 	private void purgeAndInit() {
 		purgeAndInit = false;
@@ -116,10 +121,9 @@ public class Game implements io.Printer.PlayerContainer,
 	}
 
 	/**
-	 * Create all the rooms and link their exits together.
+	 * Create all the rooms, link their exits together and add events to them.
 	 */
 	private void createRooms() {
-		rooms = new ArrayList<Room>();
 		Room main, swingEast, swingSouth, swingTo, keyRoom, locked,
 		     springFrom, springTo, spike, timeRiddle;
 		
@@ -209,17 +213,6 @@ public class Game implements io.Printer.PlayerContainer,
 		spike.setTwoWayExit(Direction.NORTH, timeRiddle);
 		
 		startRoom = main;
-		
-		rooms.add(main);
-		rooms.add(swingEast);
-		rooms.add(swingSouth);
-		rooms.add(swingTo);
-		rooms.add(keyRoom);
-		rooms.add(locked);
-		rooms.add(springFrom);
-		rooms.add(springTo);
-		rooms.add(spike);
-		rooms.add(timeRiddle);
 	}
 	
 	private void createPlayers() {

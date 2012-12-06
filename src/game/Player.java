@@ -2,7 +2,10 @@ package game;
 import geodata.Direction;
 import geodata.Room;
 
-
+/**
+ * A basic class to describe a Player in a room that
+ * might be carrying a key.
+ */
 public class Player {
 	
 	private Room    currentRoom;

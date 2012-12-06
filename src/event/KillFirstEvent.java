@@ -2,6 +2,10 @@ package event;
 
 import geodata.Room;
 
+/**
+ * An event that kills the first few players that enter
+ * the room in which this event resides.
+ */
 public class KillFirstEvent implements Event {
 	
 	private int leftToKill;

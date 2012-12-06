@@ -44,7 +44,7 @@ public enum Direction {
 	/**
 	 * Gets a Direction object based on the provided String. This string
 	 * may either be a perfect match with the Direction's name or the first
-	 * few characters of the Direction's name.
+	 * few characters of the Direction's name. The match is not case-sensitive.
 	 * @param direction the String describing the Direction
 	 * @return
 	 */

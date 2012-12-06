@@ -2,6 +2,11 @@ package event;
 
 import geodata.Room;
 
+/**
+ * An event that awards a point if there is a player in the
+ * room in which this event resides on a certain turn, given
+ * in the constructor.
+ */
 public class PointOnTurnEvent implements Event {
 	
 	private boolean[] playerInRoom; 

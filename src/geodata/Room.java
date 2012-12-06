@@ -14,7 +14,7 @@ import event.Event;
  * to the neighboring room.
  * 
  * A Room can also contain events that might trigger when certain things happen.
- * These events require that som trigger methods are called when they should,
+ * These events require that some trigger methods are called when they should,
  * namely playerEntered(int), playerLeft(int) and tick(). See the description for
  * each of these for when they should be called.
  */

@@ -2,6 +2,11 @@ package event;
 
 import geodata.Room;
 
+/**
+ * An event that makes a player swing (teleport) to another room
+ * after issuing a wait command in the room in which this event
+ * resides.
+ */
 public class WaitToSwingEvent implements Event {
 	
 	private Room room;

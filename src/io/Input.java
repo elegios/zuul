@@ -6,6 +6,10 @@ import java.util.Scanner;
 import command.Command;
 import command.CommandList;
 
+/**
+ * A class representing basic input from the command line.
+ * It can parse commands from input given a CommandList.
+ */
 public class Input {
 	
 	private Printer print;

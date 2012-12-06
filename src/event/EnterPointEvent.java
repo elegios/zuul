@@ -2,6 +2,10 @@ package event;
 
 import geodata.Room;
 
+/**
+ * An event that awards a point when a set number of players
+ * has entered the room in which the event resides.
+ */
 public class EnterPointEvent implements Event {
 	
 	private Listener listener;
